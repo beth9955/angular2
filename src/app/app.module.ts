@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { BoardService } from '../board/board.service';
+//import { BoardService } from './board/board.service';
 import { AppRoutingModule , routingComponents} from '../router/app.routes';
 
 
@@ -19,7 +19,7 @@ import { AppRoutingModule , routingComponents} from '../router/app.routes';
     JsonpModule,
     AppRoutingModule
   ],
-  providers: [ BoardService],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

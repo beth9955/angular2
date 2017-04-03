@@ -4,12 +4,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from '../app/app.component';
-import {BoardModule} from '../board/board.module';
-
 const routes: Routes = [
   { path:'',  pathMatch: 'full', redirectTo: 'main'},
   { path:'main', component:AppComponent},
-  { path: 'board',  loadChildren:'../board/board.module#BoardModule' }
+  { path: 'board',  loadChildren:'../app/board/board.module#BoardModule' }
 ];
 
 @NgModule({
