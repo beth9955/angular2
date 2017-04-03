@@ -1,39 +1,22 @@
-import {Jsonp, RequestOptions, RequestMethod, Headers} from '@angular/http';
+import 'rxjs/Rx';
 import {Injectable} from "@angular/core";
+import { HttpService } from '../service/HttpService';
+import {RequestMethod, Http} from '@angular/http';
+import {QUERY_GROUP} from '../environments/query.config';
 
+const GROUP:Object=QUERY_GROUP.GROUP;
 
 @Injectable()
-export class BoardService{
-  constructor(private jsonp:Jsonp){
-    console.log("start");
+export class BoardService extends HttpService{
+
+  constructor(public http:Http){
+    super(http, GROUP);
   }
 
 
-
-  getData(){
-    let url = 'http://127.0.0.1:9090/ds/query/Group/getGroupList';
-    let request:RequestOptions=this.getRequestOption(url)
-    this.jsonp.request(request.url,RequestOptions).forEach(function(data){
-      console.log(data);
-    });
+  //@Override
+  public getData() {
+     return super.makeRequest(GROUP["select"], RequestMethod.Post);
   }
-
-
-  getRequestOption(url:string):RequestOptions{
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let data={test:"test"};
-    let requestoptions = new RequestOptions({
-      method: RequestMethod.Post,
-      url:  url,
-      headers: headers,
-      body: JSON.stringify(data)
-    });
-    return requestoptions;
-  }
-
 
 }

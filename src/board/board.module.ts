@@ -1,12 +1,16 @@
-import { NgModule , ModuleWithProviders } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BoardComponent } from './board.component';
 import { BoardService } from './board.service';
+import { RouterModule } from '@angular/router';
+import { boardRoutes } from './board.router';
 
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+     CommonModule,
+     RouterModule.forChild(boardRoutes)
+  ],
   declarations: [
     BoardComponent
   ],
@@ -15,12 +19,5 @@ import { BoardService } from './board.service';
 })
 
 export class BoardModule {
-
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: BoardModule,
-      providers: [BoardService]
-    }
-  }
 
 }
